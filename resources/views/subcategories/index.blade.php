@@ -1,21 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subcategories</title>
-    <link rel="stylesheet" href="{{asset('css/sindex.css')}}" type="text/css">
+@extends('layout.master')
+    @section('title')
+        <title>Subcategories</title>
+    @endsection
 
-</head>
-<body>
-
+    @section('addstyle')
+            <link rel="stylesheet" href="{{asset('css/sindex.css')}}" type="text/css">
+    @endsection
+    
     <h1>SubCategory</h1>
 
-    <a href="{{url('subcategories/create')}}" class="btn btn-success mb-2">Create Subcategory</a>
-    <a href="{{url('categories')}}" class="btn btn-primary">View-Parent-Category</a>
-    <a href="{{url('categories')}}" class="btn btn-primary">Back</a>
+  
 
     <table class="table">
+    @section('table')
         <thead>
             <tr>
                 <th>ID</th>
@@ -38,6 +35,8 @@
                 </tr>
              @endforeach
         </tbody>
+    @endsection
+        
     </table>
 </body>
 </html>
