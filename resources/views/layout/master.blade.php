@@ -11,23 +11,7 @@
 <body>
   <style>
         /* Basic styling to make it look nice */
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            text-decoration:none;
-        }
-        /* Style the parent link */
-        .dropdown:hover .dropdown-content {
-            display: block;
-            text-decoration:none;
-        }
-        .header-link{
-            color:white;
-            text-decoration:none;
-        }
+     
         </style>
         <header>
         <nav>
@@ -35,10 +19,31 @@
     <div class="dropdown">
          @yield('link')
     </div>
-</div>
+      <!-- Navigation Links -->
+                <div class="dash-container">
+                    <a href="{{route('dashboard')}}" class="dashboard">Dashboard</a>
+                </div>
+            </div>
+ 
 
+   <!-- Settings Dropdown -->
+<div class="dropdown-container">
+    <button class="dropdown-btn btn" type="button">
+        <div>{{ Auth::user()->name }}</div>
+    </button>
+
+    <div class="profile-container">
+        <a href="{{ route('profile.edit') }}" class="profile-btn dropdown-item">{{ __('Profile') }}</a>
+
+        <!-- Authentication -->
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="dropdown-item">{{ __('Log Out') }}</button>
+        </form>
+    </div>
+</div>
+</div>
     </nav>    
-    
     </header>
 
     <a href="{{url('categories/create')}}" class="btn btn-success mb-2">Create Parent Category</a>

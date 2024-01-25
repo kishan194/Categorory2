@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\productcontroller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubcategoryController;
-
 
 /*
 |--------------------------------------------------------------------------
@@ -20,12 +20,7 @@ use App\Http\Controllers\SubcategoryController;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/test', function () {
-    dd(123);
-});
-
-//categories Route
+Route::middleware('auth')->group(function () {
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
 Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
@@ -39,11 +34,20 @@ Route::get('/subcategories', [SubcategoryController::class, 'index'])->name('sub
 Route::post('/subcategories', [SubcategoryController::class, 'store'])->name('subcategories.store');
 Route::get('/subcategories/{id}',[SubcategoryController::class,'view'])->name('subcategories.view');
 
-
+//Product Route
 Route::get('/product', [productcontroller::class, 'index'])->name('product.index');
 Route::get('/product/create',[productcontroller::class,'create'])->name('product.create');
 Route::post('/product',[productcontroller::class,'store'])->name('product.store');
-// Route::get('subcategory/{subcategoryId}', [productcontroller::class, 'showProductsBySubcategory'])->name('product.view');
 Route::get('/product/{id}',[productcontroller::class,'view'])->name('product.show');
+});
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+require __DIR__.'/auth.php';

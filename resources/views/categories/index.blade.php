@@ -1,4 +1,5 @@
       @extends('layout.master')
+     
 
      @section('title')
               <title>categories</title>
@@ -10,6 +11,9 @@
              <a href="#"  class="header-link">All Categories</a>
              @include('partials.category-dropdown', ['categories' => $categories])
         @endsection
+    </div>
+    <div>
+    
     </div>
 </div>
 
