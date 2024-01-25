@@ -10,8 +10,9 @@
 </head>
 <body>
   <style>
-        /* Basic styling to make it look nice */
-     
+      *{
+        margin:0px;
+      }
         </style>
         <header>
         <nav>
@@ -19,17 +20,10 @@
     <div class="dropdown">
          @yield('link')
     </div>
-      <!-- Navigation Links -->
-                <div class="dash-container">
-                    <a href="{{route('dashboard')}}" class="dashboard">Dashboard</a>
-                </div>
-            </div>
- 
-
    <!-- Settings Dropdown -->
 <div class="dropdown-container">
     <button class="dropdown-btn btn" type="button">
-        <div>{{ Auth::user()->name }}</div>
+        <div class="user-container">{{ Auth::user()->name }}</div>
     </button>
 
     <div class="profile-container">

@@ -112,7 +112,7 @@ body {
         font-size: 20px;
         text-align: center;
         text-decoration: none;
-    background-color:brown;
+        background-color:brown;
         color: #fff;
         width: 80px;
         margin-right: 5px;
@@ -149,8 +149,10 @@ body {
     }
      /* Custom CSS for positioning the dropdown */
     .dropdown-container {
-        position: relative;
-        display: inline-block;
+        
+         
+
+         padding-left: 1300px; 
         
     }
     .profile-container {
@@ -161,8 +163,10 @@ body {
         min-width: 160px;
         box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         z-index: 1;
+        
     }
-
     .dropdown-container:hover .profile-container {
         display: block;
     }
+    
+    
