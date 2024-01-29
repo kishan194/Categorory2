@@ -6,6 +6,8 @@
     @section('addstyle')
             <link rel="stylesheet" href="{{asset('css/sindex.css')}}" type="text/css">
     @endsection
+
+ 
     
     <h1>SubCategory</h1>
 

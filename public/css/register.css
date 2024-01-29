@@ -12,6 +12,7 @@ body{
   align-items: center;
   padding: 10px;
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
+  
 }
 .container{
   max-width: 700px;
@@ -20,6 +21,8 @@ body{
   padding: 25px 30px;
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  
+  background: linear-gradient(135deg, #FFB996,#864AF9 );
 }
 .container .title{
   font-size: 25px;
@@ -51,7 +54,7 @@ form .input-box span.details{
   font-weight: 500;
   margin-bottom: 5px;
 }
-.user-details .input-box input{
+.user-details .input-box  input{
   height: 45px;
   width: 100%;
   outline: none;
@@ -62,8 +65,24 @@ form .input-box span.details{
   border-bottom-width: 2px;
   transition: all 0.3s ease;
 }
+select{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+  
+}
 .user-details .input-box input:focus,
 .user-details .input-box input:valid{
+  border-color: #9b59b6;
+}
+.user-details .input-box select option:focus,
+.user-details .input-box select option:valid{
   border-color: #9b59b6;
 }
  form .gender-details .gender-title{

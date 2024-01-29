@@ -8,6 +8,9 @@
     
 </head>
 <body>
+<header>
+@include('layout.header')
+</header>
 
     <h1>Subcategories</h1>
 

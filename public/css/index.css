@@ -2,7 +2,9 @@ body {
           font-family: 'Arial', sans-serif;
           background-color: #f4f4f4;
           margin: 0px;
-          margin-top: 0px;
+        padding:0px;
+          background: linear-gradient(135deg, #FFB996,#864AF9 );
+        
       }
 
       h1 {
@@ -111,23 +113,23 @@ body {
         display: inline-block;
         font-size: 20px;
         text-align: center;
-        text-decoration: none;
-        background-color:brown;
+        background: linear-gradient(135deg, #71b7e6, #9b59b6);
         color: #fff;
         width: 80px;
         margin-right: 5px;
-        height: 25px;
+        height: 30px;
         border-radius: 4px;   
+        text-decoration: none;
     }
     .Register{
     display: inline-block;
     font-size: 20px;
     text-align: center;
     text-decoration: none;
-    background-color:brown;
+    background: linear-gradient(135deg, #71b7e6, #9b59b6);
     color: #fff;
     width: 80px;
-    height: 25px;
+    height: 30px;
     border-radius: 4px;  
     }
     .dropdown-content {

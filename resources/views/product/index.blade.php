@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="{{asset('css/sindex.css')}}" type="text/css">
 
 </head>
+<header>
+@include('layout.header')
+</header>
 <body>
 
     <h1>Product</h1>

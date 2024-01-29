@@ -1,4 +1,7 @@
 <link rel="stylesheet" href="{{asset('css/sindex.css')}}" type="text/css">
+<header>
+@include('layout.header')
+</header>
 <h1>{{ $subcategory->name }} Products</h1>
 <table class="table">
         <thead>

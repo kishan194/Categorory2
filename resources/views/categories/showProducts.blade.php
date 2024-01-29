@@ -1,5 +1,10 @@
 <link rel="stylesheet" href="{{asset('css/sindex.css')}}" type="text/css">
 
+
+<header>
+@include('layout.header')
+</header>
+
  <h1>{{ $category->name }} Products</h1>
 
 

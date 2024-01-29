@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      @yield('title')
      <link rel="stylesheet" href="{{ asset('css/index.css') }}"  type="text/css">
+     <link rel="stylesheet" href="{{ asset('css/footer.css') }}"  type="text/css">
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
      @yield("addstyle")
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> --}}
 </head>
@@ -38,19 +42,21 @@
                     @auth
                         <a href="{{ url('/dashboard') }}" class="dashboard">Dashboard</a>
                     @else
-                        <a href="{{ route('login') }}" class="login">Log in</a>
+                        <a href="{{ route('login') }}" class="login" style="text-decoration:none;">Log in</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="Register">Register</a>
+                            <a href="{{ route('register') }}" class="Register" style="text-decoration:none"
+                            >Register</a>
                         @endif
                     @endauth
             @endif
-                </div>
+            </div>
+            <div>
     <a href="{{url('categories/create')}}" class="btn btn-success mb-2">Create Parent Category</a>
     <a href="{{url('subcategories/create')}}" class="btn btn-primary mb-2">Create Subcategory</a>
     <a href="{{url('subcategories')}}"class="btn btn-primary mb-2">View Subcategory</a>
      <a href="{{url('product/create')}}" class="btn btn-secondary mb-2">Create Product</a>
-     <a href="{{url('product')}}" class="btn btn-secondary mb-2">View Product</a>
+     <a href="{{url('product')}}" class="btn btn-secondary mb-2">View Product</a></div>
     <div class="dropdown">
          @yield('link')
     </div>
@@ -62,6 +68,22 @@
     <table class="table">
            @yield('table')
     </table>
+       
+<!------ Include the above in your HEAD tag ---------->
+
+
+<section>
+</section>
+
+<footer id="footer"> 
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+          <p><u><a href="https://github.com/kishan194/Categorory2.git">GitHub:Link</a></u> Of Category,Subcategory,Products With Authentication</p>
+          <p class="h6">&copy All right Reversed.<a class="text-green ml-2" href="https://www.sunlimetech.com" target="_blank">Kishan Baraiya</a></p>
+        </div>
+      </div>  
+  </footer>
+  <!-- ./Footer -->
 </body>
 </html>
 
