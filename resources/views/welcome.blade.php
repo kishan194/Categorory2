@@ -49,14 +49,30 @@
                             >Register</a>
                         @endif
                     @endauth
-            @endif
             </div>
+             @endif
+            <div>
+
+             <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+            @if (Route::has('admin.login'))
+                <div class="login-container">
+                    @auth('admin')
+                        <a href="{{ url('/admin/dashboard') }}" class="dashboard">Admin Dashboard</a>
+                    @else
+                        <a href="{{ route('admin.login') }}" class="login" style="text-decoration:none; width:130px; margin-top:5px">Admin Login</a>
+
+                        {{-- @if (Route::has('register'))
+                            <a href="{{ route('admin.register') }}" class="Register" style="text-decoration:none">Admin Register</a>
+                        @endif --}}
+                    @endauth
+            </div>
+             @endif
             <div>
     <a href="{{url('categories/create')}}" class="btn btn-success mb-2">Create Parent Category</a>
-    <a href="{{url('subcategories/create')}}" class="btn btn-primary mb-2">Create Subcategory</a>
-    <a href="{{url('subcategories')}}"class="btn btn-primary mb-2">View Subcategory</a>
-     <a href="{{url('product/create')}}" class="btn btn-secondary mb-2">Create Product</a>
-     <a href="{{url('product')}}" class="btn btn-secondary mb-2">View Product</a></div>
+    <a href="{{url('subcategories/create')}}" class="btn btn-primary mb-2"style="margin-left:30px">Create Subcategory</a>
+    <a href="{{url('subcategories')}}" class="btn btn-primary mb-2" style= "margin-left:30px">View Subcategory</a>
+     <a href="{{url('product/create')}}" class="btn btn-secondary mb-2"  style="margin-left:30px">Create Product</a>
+     <a href="{{url('product')}}" class="btn btn-secondary mb-2" style="margin-left:30px;">View Product</a></div>
     <div class="dropdown">
          @yield('link')
     </div>
