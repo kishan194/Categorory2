@@ -76,6 +76,8 @@ body {
           color: #666;
       }
       
+   
+      
       /* Media query for responsive layout */
       @media (max-width: 768px) {
           .product-row {

@@ -39,6 +39,7 @@ Route::get('/product', [productcontroller::class, 'index'])->name('product.index
 Route::get('/product/create',[productcontroller::class,'create'])->name('product.create');
 Route::post('/product',[productcontroller::class,'store'])->name('product.store');
 Route::get('/product/{id}',[productcontroller::class,'view'])->name('product.show');
+Route::get('/productdelete/{id}',[productcontroller::class,'delete'])->name('product.delete');
 });
 
 Route::get('/dashboard', function () {
