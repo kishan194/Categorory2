@@ -1,4 +1,4 @@
-{{-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,6 +22,7 @@
                 <th style="color:black;">Category_id</th>
                 <th style="color:black;">Subcategory_id</th>
                 <th style="color:black;">Image</th>
+                 <th style="color:black;">Price</th>
                 <th style="color:black;">Actions</th>
             </tr>
         </thead>
@@ -47,6 +48,7 @@
                             @endif
                         </div>
                     </td>
+                    <td>{{$product->price}}</td>
                     <td>
                         <!-- Button to trigger the modal -->
                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewModal{{$product->id}}">
@@ -89,4 +91,4 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
-</html> --}}
+</html>

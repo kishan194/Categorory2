@@ -11,7 +11,7 @@
                 <th>Category_id</th>
                 <th>Subcategory_id</th>
                 <th>Image</th>
-               
+                <th>Price</th>
                 <th>View</th>
             </tr>
         </thead>
@@ -36,6 +36,7 @@
                                   @endif
                  </div>
                             </td>
+                            <td>{{$product->price}}
                     <td><a href="{{route('product.show',$product -> id)}}" class="btn btn-success">View</a>
                 </tr>
              @endforeach

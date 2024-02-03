@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\productcontroller;
+use App\Http\Controllers\ReviewCartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SubcategoryController;
 
@@ -19,6 +21,9 @@ use App\Http\Controllers\SubcategoryController;
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::get('/product/cart',function(){
+    return view('product.cart');
 });
 Route::middleware('auth')->group(function () {
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
@@ -40,7 +45,17 @@ Route::get('/product/create',[productcontroller::class,'create'])->name('product
 Route::post('/product',[productcontroller::class,'store'])->name('product.store');
 Route::get('/product/{id}',[productcontroller::class,'view'])->name('product.show');
 Route::get('/productdelete/{id}',[productcontroller::class,'delete'])->name('product.delete');
+Route::post('/add-to-cart/{id}', [productcontroller::class, 'addToCart'])->name('cart.add');
+Route::post('/remove-from-cart/{id}', [productcontroller::class, 'removeFromCart'])->name('cart.remove');
+Route::get('/change-qty/{id}',[productcontroller::class,'changeQty'])->name('change_qty');
+Route::get('/checkout',[productcontroller::class,'checkout'])->name('check.out');
+// Route::post('/checkout/process-order', [productcontroller::class, 'processOrder'])->name('checkout.processOrder');
+
 });
+
+Route::get('/review-cart',[ReviewCartController::class,'index'])->name('review.cart');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -52,7 +67,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 require __DIR__.'/auth.php';
-
 
 //admin route
 

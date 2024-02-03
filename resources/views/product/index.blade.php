@@ -12,7 +12,14 @@
 
     @include('layout.header')
 
+
     <h1>Product List</h1>
+    <a href = "{{url('/product/cart')}}" class="btn btn-dark">View Cart</a>
+     @if ($message = Session::get('success'))
+          <div class="alert alert-success" role="alert">
+          <strong>{{$message}}</strong>
+          </div>
+   @endif
 
     <table class="table">
         <thead>
@@ -22,7 +29,12 @@
                 <th style="color:black;">Category_id</th>
                 <th style="color:black;">Subcategory_id</th>
                 <th style="color:black;">Image</th>
+                <th style="color:black;">Price</th>
+                <th style="color:black;">Quantity</th>
                 <th style="color:black;">Actions</th>
+                
+                <th style="color:black;">Add To Cart</th>
+           
             </tr>
         </thead>
         <tbody>
@@ -32,6 +44,7 @@
                     <td>{{ $product->name }} </td>
                     <td>{{ $product->category_id}} </td>
                     <td>{{ $product->subcategory_id}} </td>
+                    
                     <td>
                         <div class="image-container">
                             @if (!empty($product->image))
@@ -47,20 +60,37 @@
                             @endif
                         </div>
                     </td>
-                    <td>
+                      <td>{{$product->price}}</td>
+
+                      
+                     <td> @foreach(session('cart') as $cartId => $item)
+                @if ($cartId == $id)
+                    @include('layout.session', ['id' => $cartId, 'item' => $item])
+                @endif
+            @endforeach</td>
+                    
+                   
                         <!-- Button to trigger the modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewModal{{$product->id}}">
+                       <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewModal{{$product->id}}">
                             View
                         </button>
 
                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteConfirmationModal{{$product->id}}">
                             Delete
-                        </button>
-                       
+                        </button>   
                     </td>
+                     
+                <td>
+                         <form action="{{ route('cart.add', $product->id) }}" method="post">
+                       @csrf
+                        <button type="submit" class="btn btn-info">Add to Cart</button>
+                        </form> 
+                </td>
                 </tr>
             @endforeach
+                
         </tbody>
+        
     </table>
 
     <!-- Bootstrap Modal for Product Description -->
@@ -70,7 +100,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="viewModalLabel{{$product->id}}">Product Details: {{$product->name}}</h5>
-                        <button type="button" class="close" >
+                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -88,7 +118,6 @@
             </div>
         </div>
     @endforeach
-
     @foreach ($products as $product)
         <div class="modal fade" id="deleteConfirmationModal{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel{{$product->id}}" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -110,10 +139,12 @@
             </div>
         </div>
     @endforeach
-
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+
+
 </body>
 </html>

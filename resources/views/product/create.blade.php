@@ -50,6 +50,14 @@
             <label for="image">Product Image:</label>
             <input type="file" name="image[]" multiple>
         </div>
+         <div class="form-group">
+            <label for="name">Price:</label>
+            <input type="number" name="price"  required>
+        </div>
+        <div class="form-group">
+            <label for="name">Quantity</label>
+            <input type="number" name="quantity"  required>
+        </div>
         <button type="submit" cladd="btn btn-success">Create Category</button>
         <a href="{{url('categories')}}" class="btn btn-success">Back</a>
     </form>
