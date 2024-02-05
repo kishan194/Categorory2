@@ -8,21 +8,30 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="{{ asset('css/checkout.css') }}"  type="text/css">
 </head>
+ @if ($message = Session::get('success'))
+          <div class="alert alert-success" role="alert">
+          <strong>{{$message}}</strong>
+          </div>
+   @endif
 @include('layout.header')
 <body>
-    @php 
-                   $total = 0;
-                      @endphp
-                @foreach(session('cart') as $id => $item)
-                      @php 
-                            $sub_total = $item['price'] * $item['quantity'];
-                            $total += $sub_total 
-                      @endphp
-                    @endforeach  
+          @php
+    $total = 0;
+    $cart = session('cart', []);
+@endphp
+
+@foreach($cart as $id => $item)
+    @php
+        $sub_total = $item['price'] * $item['quantity'];
+        $total += $sub_total;
+    @endphp
+    
+@endforeach
 <div class="row">
   <div class="col-75">
     <div class="container">
-      <form action="/action_page.php">
+     <form action="{{route('place.order')}}" method="POST">
+        @csrf
         <div class="row">
           <div class="col-50">
             <h3>Billing Address</h3>
@@ -34,19 +43,11 @@
             <input type="text" id="adr" name="address">
             <label for="city"><i class="fa fa-institution"></i> City</label>
             <input type="text" id="city" name="city">
-
-            <div class="row">
-              <div class="col-50">
-                <label for="state">State</label>
-                <input type="text" id="state" name="state" >
-              </div>
               <div class="col-50">
                 <label for="zip">Zip</label>
                 <input type="text" id="zip" name="zip" >
               </div>
             </div>
-          </div>
-
           <div class="col-50">
             <h3>Payment</h3>
             <label for="fname">Accepted Cards</label>
@@ -78,17 +79,21 @@
           <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
         </label>
        <button type="submit" class="btn btn success">Place Order</button>
-      </form>
+       </form>
     </div>
   </div>
   <div class="col-25">
     <div class="container">
         <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i></span></h4>
-        @foreach(session('cart') as $id => $item)
-            <p>{{ $item['name'] }} <span class="price">{{ $item['price'] }} x {{ $item['quantity'] }} </span></p>
-        @endforeach
+        @if(count(session('cart')??[]) > 0)
+          @foreach(session('cart') as $id => $item)
+              <p>{{ $item['name'] }} <span class="price">{{ $item['price'] }} x {{ $item['quantity'] }} </span></p>
+          @endforeach
       
         <p>Total: <span class="price">{{ $total }}</span></p>
+        @else
+        <p>Your cart is empty</p>
+        @endif
     </div>
 </div>
 

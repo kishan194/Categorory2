@@ -55,27 +55,14 @@
                             @endif</td>
                          <td>{{$item['price'] ?? ''}}</td>
                          <td>        <form action="{{route('change_qty', $id)}}" class="d-flex">
-                                    <button
-                                        type="submit"
-                                        value="down"
-                                        name="change_to"
-                                        class="btn btn-danger"
-                                    >
+                                    <button type="submit"  value="down" name="change_to" class="btn btn-danger">
                                         @if($item['quantity']=== 1) - @else - @endif
                                     </button>
-                                    <input
-                                        type="number"
-                                        value="{{$item['quantity']}}"
-                                        disabled>
-                                    <button
-                                        type="submit"
-                                        value="up"
-                                        name="change_to"
-                                        class="btn btn-info"
-                                    >
+                                    <input type="number" value="{{$item['quantity']}}"  disabled>
+                                    <button type="submit" value="up" name="change_to" class="btn btn-info">
                                         +
                                     </button>
-                                </form>
+                             </form>
                          </td>
                      <td>{{$sub_total}}</td>
                         <td><form action="{{ route('cart.remove', $item['id']) }}" method="post">
@@ -91,12 +78,9 @@
                 @endforeach
             </tbody>
             
-        </table>
-  
-       
+        </table>     
         <div class="check-container" style="text-align:center;">
         <a href="{{ route('review.cart') }}" class="btn btn-success">Proceed to Checkout</a>
-        
         <div>
     @else
         <p>Your cart is empty.</p>

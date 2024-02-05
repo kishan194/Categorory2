@@ -62,15 +62,10 @@
                     </td>
                       <td>{{$product->price}}</td>
 
-                      
-                     <td> @foreach(session('cart') as $cartId => $item)
-                @if ($cartId == $id)
-                    @include('layout.session', ['id' => $cartId, 'item' => $item])
-                @endif
-            @endforeach</td>
+                      <td>{{$product->quantity}}</td>
+                  
                     
                    
-                        <!-- Button to trigger the modal -->
                        <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#viewModal{{$product->id}}">
                             View
                         </button>
@@ -88,9 +83,7 @@
                 </td>
                 </tr>
             @endforeach
-                
         </tbody>
-        
     </table>
 
     <!-- Bootstrap Modal for Product Description -->
@@ -109,7 +102,6 @@
                         <p><strong>Name:</strong> {{$product->name}}</p>
                         <p><strong>Category ID:</strong> {{$product->category_id}}</p>
                         <p><strong>Subcategory ID:</strong> {{$product->subcategory_id}}</p>
-                        <!-- Add more details as needed -->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
