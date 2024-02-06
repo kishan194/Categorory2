@@ -3,7 +3,9 @@ body {
   font-family: Arial;
   font-size: 17px;
   padding: 8px;
+ 
 }
+
 
 * {
   box-sizing: border-box;
@@ -25,17 +27,21 @@ body {
 .col-50 {
   -ms-flex: 50%; /* IE10 */
   flex: 50%;
+  
 }
 
 .col-75 {
   -ms-flex: 75%; /* IE10 */
   flex: 75%;
+  margin-top: -10px;
+
 }
 
 .col-25,
 .col-50,
 .col-75 {
   padding: 0 16px;
+  margin-top: -10px;
 }
 
 .container {
@@ -43,8 +49,8 @@ body {
   padding: 5px 20px 15px 20px;
   border: 1px solid lightgrey;
   border-radius: 3px;
+  
 }
-
 input[type=text] {
   width: 100%;
   margin-bottom: 20px;

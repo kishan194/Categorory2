@@ -47,8 +47,8 @@
             box-sizing: border-box;
         }
         input[type="file"] {
-            border: 1px solid black; /* Make the file input a block element */
-            margin-top: 5px; /* Add some space above the file input */
+            border: 1px solid black; 
+            margin-top: 5px; 
         }
 
         button {
