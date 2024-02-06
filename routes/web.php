@@ -49,9 +49,10 @@ Route::get('/checkout',[productcontroller::class,'checkout'])->name('check.out')
 
 
 });
+Route::post('/add-to-cart/{id}', [productcontroller::class, 'addToCart'])->name('cart.add');
 Route::get('/subcategories', [SubcategoryController::class, 'index'])->name('subcategories.index');
 Route::get('/product', [productcontroller::class, 'index'])->name('product.index');
-Route::post('/add-to-cart/{id}', [productcontroller::class, 'addToCart'])->name('cart.add');
+
 Route::post('/remove-from-cart/{id}', [productcontroller::class, 'removeFromCart'])->name('cart.remove');
 Route::get('/change-qty/{id}',[productcontroller::class,'changeQty'])->name('change_qty');
 

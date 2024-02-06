@@ -40,7 +40,7 @@
             @if (Route::has('login'))
                 <div class="login-container">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="dashboard">Dashboard</a>
+                        <a href="{{ url('/categories') }}"  class="dashboard">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}" class="login" style="text-decoration:none;">Log in</a>
 
@@ -56,10 +56,14 @@
              <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
             @if (Route::has('admin.login'))
                 <div class="login-container">
+                  
                     @auth('admin')
                         <a href="{{ url('/admin/dashboard') }}" class="dashboard">Admin Dashboard</a>
                     @else
-                        <a href="{{ route('admin.login') }}" class="login" style="text-decoration:none; width:130px; margin-top:5px">Admin Login</a>
+                       @guest
+    <a href="{{ route('admin.login') }}" class="login" style="text-decoration:none; width:130px; margin-top:5px">Admin Login</a>
+    {{-- Show admin login button only for guests --}}
+@endguest
 
                         {{-- @if (Route::has('register'))
                             <a href="{{ route('admin.register') }}" class="Register" style="text-decoration:none">Admin Register</a>
