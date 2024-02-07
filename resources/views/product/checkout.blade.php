@@ -74,12 +74,12 @@
             <div class="row">
               <div class="col-50">
                 <label for="expyear">Exp Year</label>
-                <input type="number" id="expyear" name="expyear" min=1 max=9999 required>
+                <input type="number" id="expyear" name="expyear" min=1000 max=9999 required>
                 
               </div>
               <div class="col-50">
                 <label for="cvv">CVV</label>
-                <input type="password" id="cvv" name="cvv" min=1 max=999 required>
+                <input type="password" id="cvv" name="cvv" min=100 max=999 required>
               </div>
             </div>
           </div>
@@ -87,7 +87,10 @@
         <label>
           <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
         </label>
+        
        <button type="submit" class="btn btn success">Place Order</button>
+     
+   
        </form>
     </div>
   </div>
@@ -98,10 +101,9 @@
         @foreach(session('cart') as $id => $item)
             <p>{{ $item['name'] }} <span class="price">{{ $item['price'] }} x {{ $item['quantity'] }} </span></p>
         @endforeach
-      
         <p>Total: <span class="price">{{ $total }}</span></p>
-        @else
-        <p>Your Cart is empty</p>
+        @else 
+        <a href="{{ route('cart.orderDetail') }}" style="text-decoration:none;">View All Order</a>
         @endif
     </div>
 </div>

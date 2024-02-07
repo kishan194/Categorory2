@@ -59,6 +59,8 @@ Route::get('/change-qty/{id}',[productcontroller::class,'changeQty'])->name('cha
 
 Route::get('/review-cart',[ReviewCartController::class,'index'])->name('review.cart');
 Route::POST('/place/order',[ReviewCartController::class,'placeorder'])->name('place.order');
+Route::get('/orderDetail',[ReviewCartController::class,'orderDetail'])->name('cart.orderDetail');
+Route::get('order-view/{order_id}',[ReviewCartController::class,'OrderView'])->name('cart.orderView');
 
 
 
