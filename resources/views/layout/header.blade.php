@@ -8,7 +8,7 @@
     <div class="dropdown">
          @yield('link')
     </div>
-         
+
    <!-- Settings Dropdown -->
 @if(Auth::check())
     <div class="dropdown-container">
