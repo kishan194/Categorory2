@@ -56,6 +56,10 @@
     <a href="{{url('subcategories')}}"class="btn btn-primary mb-2">View Subcategory</a>
      <a href="{{url('product/create')}}" class="btn btn-secondary mb-2">Create Product</a>
      <a href="{{url('product')}}" class="btn btn-secondary mb-2">View Product</a>
+    
+     
+
+    
 
    
 

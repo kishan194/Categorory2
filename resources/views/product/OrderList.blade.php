@@ -7,6 +7,7 @@
 @include('layout.header')
 </header>
 <body>
+                   
 <h1>Order List</h1>
 
  <table class="table">
@@ -14,11 +15,13 @@
             <tr>
                 <th style="color:black;">Order_id</th>
                 <th style="color:black;">User_name</th>
-               <th style="color:black;">Email</th>
-               <th style="color:black;">Action</th>
+                <th style="color:black;">Email</th>
                 <th style="color:black;">Product_id</th>
+                <th style="color:black;">product name</th>
                 <th style="color:black;">Quantity</th>
                 <th style="color:black;">Price</th>
+                 <th style="color:black;">Subtotal</th>
+                <th style="color:black;">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -30,6 +33,7 @@
     }
 @endphp
 
+
 @foreach ($mergedData as $orderId => $data)
     @foreach ($data['items'] as $key => $item)
         <tr>
@@ -37,6 +41,7 @@
                 <td rowspan="{{ count($data['items'])}}">
                     {{$item->order_id}}
                 </td>
+
                 
                 <td rowspan="{{ count($data['items'])}}">
                     {{$data['order']->fullname}}
@@ -44,17 +49,20 @@
                 <td rowspan="{{ count($data['items'])}}">
                     {{$data['order']->email}}
                 </td>
-                 <td rowspan="{{ count($data['items'])}}">
-                    <a href="{{ url('order-view/'.$item->order_id)}}" class="btn btn-success">View Full Detail</a>
-             </td>
             @endif
             <td>{{ $item->product_id }}</td>
-            <td>{{ $item->quantity }}</td>
-            <td>{{ $item->price }}</td>  
+             <td>{{ $item->name}}</td> 
+            <td>{{ $item->quantity}}</td>
+            <td>{{ $item->price}}</td> 
+             <td>{{ $item->quantity * $item->price }}</td>
+            @if($key === 0)
+                        <td rowspan="{{ count($data['items']) }}">
+                            <a href="{{ url('order-view/'.$item->order_id) }}" class="btn btn-success">View Full Detail</a>
+                        </td>
+                    @endif
         </tr>
     @endforeach
 @endforeach
-
         </tbody>
     </table>   
    
