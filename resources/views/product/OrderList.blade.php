@@ -32,8 +32,6 @@
         $mergedData[$item->order_id]['items'][] = $item;
     }
 @endphp
-
-
 @foreach ($mergedData as $orderId => $data)
     @foreach ($data['items'] as $key => $item)
         <tr>
@@ -41,8 +39,6 @@
                 <td rowspan="{{ count($data['items'])}}">
                     {{$item->order_id}}
                 </td>
-
-                
                 <td rowspan="{{ count($data['items'])}}">
                     {{$data['order']->fullname}}
                 </td>
@@ -67,12 +63,10 @@
     </table>   
    
                     <div class="mt-4 d-flex justify-content-between align-items-center">
-    <!-- Pagination links -->
+    {{-- pagignation --}}
     <div>
         {{ $orderItems->links() }}
     </div>
-
-
 </div>
 </body>
 </html>

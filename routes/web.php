@@ -62,8 +62,6 @@ Route::POST('/place/order',[ReviewCartController::class,'placeorder'])->name('pl
 Route::get('/orderDetail',[ReviewCartController::class,'orderDetail'])->name('cart.orderDetail');
 Route::get('order-view/{order_id}',[ReviewCartController::class,'OrderView'])->name('cart.orderView');
 
-
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
