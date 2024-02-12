@@ -48,11 +48,13 @@
                         <td>{{ $item['name'] }}</td>
                         <td>{{ $item['category_id'] }}</td>
                         <td>{{ $item['subcategory_id'] }}</td>
-                        <td> @if (isset($item['image']))
-                         @foreach (json_decode($item['image']) as $image)
-                       <img src="{{ $image }}" alt="{{ $item['name'] }}" class="img-fluid" width="50px">
-                             @endforeach
-                            @endif</td>
+                        <td>
+                            @if (isset($item['image']))
+                                @foreach (json_decode($item['image']) as $image)
+                                    <img src="{{ asset('products/' . $image) }}" alt="{{ $item['name'] }}" class="img-fluid" width="50px">
+                                @endforeach
+                            @endif
+                        </td>
                          <td>{{$item['price'] ?? ''}}</td>
                          <td>        <form action="{{route('change_qty', $id)}}" class="d-flex">
                                     <button type="submit"  value="down" name="change_to" class="btn btn-danger">

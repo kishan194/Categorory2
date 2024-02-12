@@ -35,11 +35,13 @@
                        
                         <td>{{ $item['name'] }}</td>
                         
-                        <td> @if (isset($item['image']))
-                         @foreach (json_decode($item['image']) as $image)
-                       <img src="{{ $image }}" alt="{{ $item['name'] }}" class="img-fluid" width="50px">
-                             @endforeach
-                            @endif</td>
+                       <td>
+                            @if (isset($item['image']))
+                                @foreach (json_decode($item['image']) as $image)
+                                    <img src="{{ asset('products/' . $image) }}" alt="{{ $item['name'] }}" class="img-fluid" width="50px">
+                                @endforeach
+                            @endif
+                        </td>
                          <td> <span class="price">{{ $item['price'] }} x {{ $item['quantity'] }}</span></p></td>
                      <td>{{$sub_total}}</td>
                         
