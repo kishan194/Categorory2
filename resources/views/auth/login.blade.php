@@ -23,7 +23,7 @@
                 <div class="mt-2 text-danger">{{ $message }}</div>
             @enderror
         </div>
-
+    
         <!-- Remember Me -->
         <div class="form-group form-check">
             <input id="remember_me" type="checkbox" class="form-check-input" name="remember">

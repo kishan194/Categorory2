@@ -12,7 +12,7 @@
 <div class="container">
     <div class="title">Registration</div>
     <div class="content">
-<form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
+<form method="POST" action="{{ route('admin.register') }}" enctype="multipart/form-data">
     @csrf
      <div class="user-details">
       <!-- Name -->
