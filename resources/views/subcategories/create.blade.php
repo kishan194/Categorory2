@@ -44,7 +44,7 @@
         <a href="{{url('categories')}}" class="btn btn-success">Back</a>
     </form>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script>a
+<script>
     $(document).ready(function(){
     $("#myform").submit(function(e){
         e.preventDefault();
