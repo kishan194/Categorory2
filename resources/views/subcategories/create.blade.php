@@ -18,8 +18,7 @@
           <strong>{{$message}}</strong>
           </div>
    @endif
-
-    <form action="/subcategories" method="POST" enctype="multipart/form-data">
+    <form id="myform" enctype="multipart/form-data">
         @csrf
 
         <div class="form-group">
@@ -31,7 +30,6 @@
                 @endforeach
             </select>
         </div>
-
         <div class="form-group">
             <label for="name">Subcategory Name:</label>
             <input type="text" name="name" required>
@@ -41,9 +39,38 @@
             <label for="image">Subcategory Image:</label>
             <input type="file" name="image">
         </div>
-
-        <button type="submit">Create Subcategory</button>
-         <a href="{{url('categories')}}" class="btn btn-primary">Back</a>
+       <div id="successMessage" >Data added successfully.</div>
+        <button type="submit" id="btnSubmit" class="btn btn-success">Create SubCategory</button>
+        <a href="{{url('categories')}}" class="btn btn-success">Back</a>
     </form>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+    $("#myform").submit(function(e){
+        e.preventDefault();
+        var form = $(this)[0]; 
+        var data = new FormData(form); 
+
+        $("#btnSubmit").prop("disabled", true);
+
+        $.ajax({
+            type: "POST",
+            url: "{{ route('subcategories.store') }}",
+            data: data,
+            processData: false, 
+            contentType: false,
+            success: function(response) {
+              $("#successMessage").show(); 
+            },
+            error: function(xhr, status, error) {
+            },
+            complete: function() {
+                $("#btnSubmit").prop("disabled", false);
+            }
+        });
+    });
+});
+
+</script>
 </body>
 </html>

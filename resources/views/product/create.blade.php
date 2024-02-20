@@ -22,7 +22,7 @@
           </div>
    @endif
 
-    <form action="/product" method="POST" enctype="multipart/form-data">
+    <form  id="myform" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="name">product Name:</label>
@@ -58,8 +58,41 @@
             <label for="name">Quantity</label>
             <input type="number" name="quantity"  required>
         </div>
-        <button type="submit" cladd="btn btn-success">Create Category</button>
+        <div id="successMessage" style="display: none;">Data added successfully.</div>
+        <button type="submit" id="btnSubmit" class="btn btn-success">Create Category</button>
         <a href="{{url('categories')}}" class="btn btn-success">Back</a>
     </form>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+    $("#myform").submit(function(e){
+        e.preventDefault();
+        var form = $(this)[0]; 
+        var data = new FormData(form); 
+
+        $("#btnSubmit").prop("disabled", true);
+
+        $.ajax({
+            type: "POST",
+            url: "{{ route('product.store') }}",
+            data: data,
+            processData: false, 
+            contentType: false,
+            success: function(response) {
+              $("#successMessage").show(); 
+            },
+            error: function(xhr, status, error) {
+              
+            },
+            complete: function() {
+                $("#btnSubmit").prop("disabled", false);
+            }
+        });
+    });
+});
+
+</script>
 </body>
 </html>
+ 
