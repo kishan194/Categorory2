@@ -37,6 +37,12 @@
              @endforeach
         </tbody>
            @endsection
-    </table>
+    </table>    
+    @section('pagination')
+        <div class="mt-5">
+              {{$categories -> links()}}
+     </div>     
+    @endsection
+    
 </body>
 </html>

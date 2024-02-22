@@ -13,7 +13,21 @@
 
 <body>
 
-
+<style>
+#success-message,
+#error-message{
+  background: #DEF1D8;
+  color: green;
+  font-size: 30px;
+  padding: 10px;
+  margin: 10px;
+  display: none;
+  position: fixed;
+  right: 15px;
+  top: 15px;
+  z-index: 20;
+}
+</style>
     <h1>Create Product</h1>
 
      @if ($message = Session::get('success'))
@@ -58,9 +72,12 @@
             <label for="name">Quantity</label>
             <input type="number" name="quantity"  required>
         </div>
-        <div id="successMessage" style="display: none;">Data added successfully.</div>
-        <button type="submit" id="btnSubmit" class="btn btn-success">Create Category</button>
-        <a href="{{url('categories')}}" class="btn btn-success">Back</a>
+        
+        <div id="success-message" class="messages" style="display:none">Record Added SuccessFull</div>
+       <div id="error-message" class="messages" style="display:none">Some One Error</div>
+
+        <button type="submit" id="btnSubmit"  class="btn btn-success">Create Category</button>
+        <a href="{{url('categories')}}"   class="btn btn-success">Back</a>
     </form>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
@@ -80,13 +97,20 @@
             processData: false, 
             contentType: false,
             success: function(response) {
-              $("#successMessage").show(); 
+              $("#success-message").show();
+              $("select").val('');
+               $("input[type='text']").val('');
+              $("input[type='file']").val('');
+              $("input[type='number']").val('');
             },
             error: function(xhr, status, error) {
               
             },
             complete: function() {
                 $("#btnSubmit").prop("disabled", false);
+                 $("input[type='text']").val('');
+                 $("input[type='file']").val('');
+                   $("input[type='number']").val('');
             }
         });
     });

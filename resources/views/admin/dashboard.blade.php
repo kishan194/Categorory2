@@ -1,1 +1,1 @@
-@include('layout.adminheader')
+@extends('admin.layouts.master')

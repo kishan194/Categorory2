@@ -10,6 +10,7 @@
 <header>
 @include('layout.header')
 </header>
+
 <body>
 
     <h1>Create Subcategory</h1>
@@ -39,7 +40,23 @@
             <label for="image">Subcategory Image:</label>
             <input type="file" name="image">
         </div>
-       <div id="successMessage" >Data added successfully.</div>
+        <style>
+            #success-message,
+            #error-message{
+            background: #DEF1D8;
+            color: green;
+            font-size: 30px;
+            padding: 10px;
+            margin: 10px;
+            display: none;
+            position: fixed;
+            right: 15px;
+            top: 15px;
+            z-index: 20;
+            }
+        </style>
+        <div id="success-message" class="messages" style="display:none">Record Added SuccessFull</div>
+        <div id="error-message" class="messages" style="display:none">Some One Error</div>
         <button type="submit" id="btnSubmit" class="btn btn-success">Create SubCategory</button>
         <a href="{{url('categories')}}" class="btn btn-success">Back</a>
     </form>
@@ -60,12 +77,17 @@
             processData: false, 
             contentType: false,
             success: function(response) {
-              $("#successMessage").show(); 
+              $("#success-message").show();
+              $("select").val('');
+              $("input[type='text']").val('');
+              $("input[type='file']").val('');
             },
             error: function(xhr, status, error) {
             },
             complete: function() {
                 $("#btnSubmit").prop("disabled", false);
+                  $("input[type='name']").val('');
+              $("input[type='file']").val('');
             }
         });
     });

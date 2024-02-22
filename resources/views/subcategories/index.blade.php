@@ -6,7 +6,12 @@
     @section('addstyle')
             <link rel="stylesheet" href="{{asset('css/sindex.css')}}" type="text/css">
     @endsection
-
+    
+  <style>
+  nav .w-5{
+        display: none;
+  }
+  </style>
  
     
     <h1>SubCategory</h1>
@@ -38,7 +43,13 @@
              @endforeach
         </tbody>
     @endsection
-        
+      
     </table>
+    @section('pagination')
+        <div class= "mt-5">
+    {{$subcategories->links()}}
+    </div>
+    @endsection
+    
 </body>
 </html>

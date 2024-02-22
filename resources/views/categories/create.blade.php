@@ -37,7 +37,23 @@
             <label for="image">Category Image:</label>
             <input type="file" name="image">
         </div>
-        <div id="successMessage" style="display: none;">Data added successfully.</div>
+        <style>
+            #success-message,
+            #error-message{
+            background: #DEF1D8;
+            color: green;
+            font-size: 30px;
+            padding: 10px;
+            margin: 10px;
+            display: none;
+            position: fixed;
+            right: 15px;
+            top: 15px;
+            z-index: 20;
+            }
+        </style>
+        <div id="success-message" class="messages" style="display:none">Record Added SuccessFull</div>
+        <div id="error-message" class="messages" style="display:none">Some One Error</div>
  
         <button type="submit"  class="btn btn-success">Create Category</button>
         <a href="{{url('/categories')}}" id="btnSubmit" class="btn btn-success">Back</a>
@@ -62,13 +78,17 @@
             contentType: false,
             success: function(response) {
                 
-              $("#successMessage").show(); 
+              $("#success-message").show();
+               $("input[type='text']").val('');
+              $("input[type='file']").val('');
             },
             error: function(xhr, status, error) {
               
             },
             complete: function() {
                 $("#btnSubmit").prop("disabled", false);
+                 $("input[type='text']").val('');
+              $("input[type='file']").val('');
             }
         });
     });
